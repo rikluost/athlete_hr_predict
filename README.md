@@ -4,20 +4,15 @@ A working methodology for training a LSTM model for predicting heart rate from m
 
 Knowing that a certain heart rate limit is going to be met e.g. in 30 seconds time could help athlete reducing the load already before the threshold is met and help maintaining a wanted heart rate. A pretrained model could run e.g. in a watch, treadmil or cycling computer.
 
-Inputs for the prediction are the previous, e.g. 60 seconds of the below predictors - or calcuated additional columns based on those:
-- heart rate
-- cadence
-- speed
-- altitude (or calcuated grade)
+Modern sports watches contain many sensors, e.g. heart ratem cadence, barometer, in case of cycling also power sensor, GPS sensors, and the readings are typically saved every once per second in a file. Here, the input features for training the model consist of a subset of heart rate, cadence, speed and the grade of the hill.
 
-The fit data here is collected using Garmin Fenix 6s accompanied with Polar HO2 sensor. The decoding of the example files was done earlier with https://github.com/polyvertex/fitdecode library.
+The fit data here was collected using Garmin Fenix 6s accompanied with Polar HO2 sensor. The decoding of the example files was done by using https://github.com/polyvertex/fitdecode library.
 
-The code is an initial version, which works, but requires additional work on the following for improved performance and analysis:
+The code is an initial version, which works, but additional work is required for improved performance and analysis:
 - data celansing
+- further model architecture exploration
 - short EDA
-- improve analysis of the results
+- model evaluation improvements
 - make multi-file validation & test datasets possible - even though training can use multiple files, validation and testing are still restricted to one fit file .
 
-Some of the code is based on examples in https://keras.io/examples/timeseries
-
-Similarly, the approach could be used for cycling with a bike equipped with power sensor.
+Parts of the code is based on examples in https://keras.io/examples/timeseries
