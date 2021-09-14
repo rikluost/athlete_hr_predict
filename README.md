@@ -2,7 +2,7 @@
 
 The code attempts to predict a runners heart rate in n seconds time based on the previous m seconds
 
-Knowing that a certain heart rate limit is going to be met could help athlete reducing the load already before the point is met and help maintaining wanted heart rate. A pretrained model could run e.g. in a watch, treadmil or cycling computer.
+Knowing that a certain heart rate limit is going to be met e.g. in 20 seconds time could help athlete reducing the load already before the threshold is met and help maintaining a wanted heart rate. A pretrained model could run e.g. in a watch, treadmil or cycling computer.
 
 Inputs for the prediction are the previous, e.g. 60 seconds of the below predictors:
 - heart rate
