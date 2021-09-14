@@ -15,8 +15,8 @@ The fit data here is collected using Garmin Fenix 6s accompanied with Polar HO2 
 The code is an initial version, which works, but requires additional work on the following for improved performance and analysis:
 - data celansing
 - short EDA
-- improved analysis of the results
-- make multi-file validation datasets possible - currently works only with on fit file.
+- improve analysis of the results
+- make multi-file validation & test datasets possible - even though training can use multiple files, validation and testing are still restricted to one fit file .
 
 Some of the code is based on examples in https://keras.io/examples/timeseries
 
