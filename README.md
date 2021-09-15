@@ -11,11 +11,8 @@ Modern sports watches contain many sensors, e.g. heart ratem cadence, barometer,
 The fit data here was collected using Garmin Fenix 6s accompanied with Polar HO2 sensor. The decoding of the example files was done by using https://github.com/polyvertex/fitdecode library.
 
 The code is an initial version, which works, but additional work is required for improved performance and analysis:
-- data celansing
 - further model architecture exploration
-- short EDA
-- model evaluation improvements
-- make multi-file validation & test datasets possible - even though training can use multiple files, validation and testing are still restricted to one fit file .
+- improve EDA
 
 Parts of the code is based on examples in https://keras.io/examples/timeseries
 
