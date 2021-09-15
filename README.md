@@ -1,4 +1,4 @@
-# Predicting heart rate during excercise with LSTM
+# Predicting heart rate in advance during excercise with LSTM
 
 A working methodology for training a LSTM model for predicting heart rate from multiple sensors data of a sports watch equipped with barometer, heart rate monitor, optionally power, cadence and GPS. The method allows predicting heart rate e.g. 30sec from now based on the past e.g. 60sec of data from various sensors.
 
