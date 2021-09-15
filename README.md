@@ -18,4 +18,45 @@ Parts of the code is based on examples in https://keras.io/examples/timeseries
 
 ## EDA
 
-![alt text](http://url/to/img.png)
+Under works
+
+![EDA Graph](https://github.com/rikluost/athlete_hr_predict/blob/master/HR_eda_t40.png)
+
+## Training, validation, testing datasets
+
+Under works
+
+
+## Model
+
+Layer (type)                 Output Shape              Param #   
+input_2 (InputLayer)         [(None, 60, 4)]           0         
+lstm_1 (LSTM)                (None, 4)                 144       
+dense_1 (Dense)              (None, 1)                 5         
+
+Total params: 149
+Trainable params: 149
+Non-trainable params: 0
+
+
+## Model training
+
+![History](https://github.com/rikluost/athlete_hr_predict/blob/master/HR_his_t40.png)
+
+
+## Evaluation
+
+Under works
+
+![t10](https://github.com/rikluost/athlete_hr_predict/blob/master/HR_t10.png)
+
+![t20](https://github.com/rikluost/athlete_hr_predict/blob/master/HR_t20.png)
+
+![t30](https://github.com/rikluost/athlete_hr_predict/blob/master/HR_t30.png)
+
+![t40](https://github.com/rikluost/athlete_hr_predict/blob/master/HR_t40.png)
+
+
+## 
+
+
