@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A working methodology for training an LSTM model (Hochreiter, S. and Schmidhuber J.  1997) for predicting heart rate from multiple sensors data of a sports watch equipped with a barometer, heart rate monitor, optionally power, cadence and GPS. The method allows predicting heart rate, e.g. 30sec from now, based on the past, e.g. 60sec of data from various sensors.
+This study explains and discusses a working methodology for training an LSTM model (Hochreiter, S. and Schmidhuber J.  1997) for predicting heart rate from multiple sensors data of a sports watch equipped with a barometer, speed information, heart rate monitor, optionally power, cadence and GPS. The method allows predicting heart rate, e.g. 30-seconds to the future, based on the past, e.g. 60sec of data from various sensors.
 
 Knowing that a specific heart rate limit will be met, e.g. in 30 seconds, could help athletes reduce the load before the threshold is met and help maintain a wanted heart rate. A pre-trained model could run, e.g. on a watch, treadmill or cycling computer.
 
@@ -64,7 +64,7 @@ An example graph below shows the observed heart rate and the predicted heart rat
 
 ### Model validation plots
 
- The model validation plots are shown for 10-second, 20-second and 40-second predictions below. The distribution of residuals on the left-hand side plot seems to follow near-Gaussian distribution for all prediction times; however the distributions are getting wider the further we are trying to predict. There is very little notable skewness, and the mean is near to the centre. The shape in the QQ plot is similar between the models to all previous models indicating that the distribution of the residuals is tail heavy at different scales between the models. 
+ The model validation plots are shown for 10-second, 20-second and 40-second predictions below. The distribution of residuals on the left-hand side plot seems to follow near-Gaussian (Gauss, C. F., 1809) distribution for all prediction times; however the distributions are getting wider the further we are trying to predict. There is very little notable skewness, and the mean is near to the centre. The shape in the QQ plot is similar between the models to all previous models indicating that the distribution of the residuals is tail heavy at different scales between the models. 
  
  The residuals' distribution over the range of the predicted values and the data collection duration are shown below. The residuals seem homogenous across the range of predictions and over the whole data collection period.
 
@@ -102,4 +102,4 @@ Ivakhnenko, A. G., & Lapa, V. G. (1965). Cybernetic Predicting Devices. CCM Info
 
 Dreyfus, S. (1973). The computational solution of optimal control problems with time lag. IEEE Transactions on Automatic Control, 18(4), 383–385. https://doi.org/10.1109/TAC.1973.1100330
 
-
+Gauss, C. F. (1809). Theoria motus corporum coelestium in sectionibus conicis solem ambientum.
