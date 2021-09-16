@@ -2,13 +2,13 @@
 
 ## Introduction
 
-A working methodology for training a LSTM model for predicting heart rate from multiple sensors data of a sports watch equipped with barometer, heart rate monitor, optionally power, cadence and GPS. The method allows predicting heart rate e.g. 30sec from now based on the past e.g. 60sec of data from various sensors.
+A working methodology for training a LSTM model (Hochreiter, S. and Schmidhuber J.  1997) for predicting heart rate from multiple sensors data of a sports watch equipped with barometer, heart rate monitor, optionally power, cadence and GPS. The method allows predicting heart rate e.g. 30sec from now based on the past e.g. 60sec of data from various sensors.
 
 Knowing that a certain heart rate limit is going to be met e.g. in 30 seconds time could help athlete reducing the load already before the threshold is met and help maintaining a wanted heart rate. A pretrained model could run e.g. in a watch, treadmil or cycling computer.
 
 Modern sports watches contain many sensors, e.g. heart ratem cadence, barometer, in case of cycling also power sensor, GPS sensors, and the readings are typically saved every once per second in a file. Here, the input features for training the model consist of a subset of heart rate, cadence, speed and the grade of the hill.
 
-The fit data here was collected using Garmin Fenix 6s accompanied with Polar HO2 sensor. The decoding of the example files was done by using https://github.com/polyvertex/fitdecode library.
+The fit data here was collected using Garmin Fenix 6s (https://buy.garmin.com/en-NZ/NZ/p/641501) accompanied with a Polar OH1 sensor (https://www.polar.com/en/products/accessories/polar-verity-sense). The decoding of the example files was done by using https://github.com/polyvertex/fitdecode library.
 
 Parts of the code is based on keras tutorials in https://keras.io/examples/timeseries
 
@@ -34,6 +34,8 @@ The fit files were split to 10 validaton files, approximately 40 model training 
 
 ## Model
 
+Neural networks (NN) are the current state of the art family of trainable machine learning algo-rithms, even though they were proposed as early as the 1940s (McCulloch & Pitts, 1943). First neu-ral networks were proposed in 1965 by Ivakhnenko & Lapa (1965). Following Seppo Linnainmaas thesis (1970), Stuart Dreyfus (1973) used backpropagation to adapt parameters to error gradients. A specific approach is to use Long Short Term Memory (LSTM) (Hochreiter, S. and Schmidhuber J. 1997) for predicting future from time series of data.
+
 The selected features were the model were the heartrate, enhanced_speed, rolling_ave_alt and cadence. Simple LSTM model with one hidden 4 neuron LSTM layer was selected with a drop-out layer for model regularisation. The model architecture is shown below:
 
 - Layer (type),                 Output Shape,              Param #   
@@ -42,6 +44,8 @@ The selected features were the model were the heartrate, enhanced_speed, rolling
 - dense_1 (Dense),              (None, 1),                 5         
 
 Total params: 149, Trainable params: 149, Non-trainable params: 0
+
+
 
 ## Model training
 
@@ -85,4 +89,17 @@ An example graph below shows the actual observed heart rate and the predicted he
 ## Discussion and analysis
 
 Under works
+
+## References
+
+Hochreiter, S., & Schmidhuber, J. (1997). Long Short-Term Memory. Neural Computation, 9(8), 1735–1780. https://doi.org/10.1162/neco.1997.9.8.1735
+
+Linnainmaa, S. (1970). The representation of the cumulative rounding error of an algorithm as a Taylor expansion of the local rounding errors. University of Helsinki.
+
+McCulloch, W. S., & Pitts, W. (1943). A logical calculus of the ideas immanent in nervous activity. The Bulletin of Mathematical Biophysics, 5(4), 115–133. https://doi.org/10.1007/BF02478259
+
+Ivakhnenko, A. G., & Lapa, V. G. (1965). Cybernetic Predicting Devices. CCM Information Corporation.
+
+Dreyfus, S. (1973). The computational solution of optimal control problems with time lag. IEEE Transactions on Automatic Control, 18(4), 383–385. https://doi.org/10.1109/TAC.1973.1100330
+
 
