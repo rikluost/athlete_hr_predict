@@ -10,51 +10,50 @@ Modern sports watches contain many sensors, e.g. heart ratem cadence, barometer,
 
 The fit data here was collected using Garmin Fenix 6s accompanied with Polar HO2 sensor. The decoding of the example files was done by using https://github.com/polyvertex/fitdecode library.
 
-The code is an initial version, which works, but additional work is required for improved performance and analysis:
-- further model architecture exploration
-- improve EDA
-
-Parts of the code is based on examples in https://keras.io/examples/timeseries
+Parts of the code is based on keras tutorials in https://keras.io/examples/timeseries
 
 ## EDA
 
-Under works
+The data consists of fit-files collected on approximately 50 runs during 2021. The runs were made in various environments, i.e. hilly and flat. Also various efforts, e.g. long and slow runs, and interval training are included.
+
+Below graph shows the features as collected by the Garmin Fenix S6 sports watch during a single run on hills, but with an additional engineered field of the rolling 5 seconds average altitude difference between the 1 second timestamps 'rolling_ave_alt'.
 
 ![EDA Graph](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_eda_t40.png)
 
+The units in the measurements here are 
+- heart rate, beats per minute
+- enhanced_speed, meters per second
+- rolling_ave_alt, altitude change metres per second, 5 second moving average
+- cadence, steps per minute
+- distance, metres
+- enhanced_altitude, metres above the sealevel
+
 ## Training, validation, testing datasets
 
-Under works
-
-
+The fit files were split to 10 validaton files, approximately 40 model training files and 5 files for testing purposes.
 
 ## Model
 
+The selected features were the model were the heartrate, enhanced_speed, rolling_ave_alt and cadence. Simple LSTM model with one hidden 4 neuron LSTM layer was selected with a drop-out layer for model regularisation. The model architecture is shown below:
 
-Layer (type)                 Output Shape              Param #   
-input_2 (InputLayer)         [(None, 60, 4)]           0         
-lstm_1 (LSTM)                (None, 4)                 144       
-dense_1 (Dense)              (None, 1)                 5         
+- Layer (type),                 Output Shape,              Param #   
+- input_2 (InputLayer),         [(None, 60, 4)],           0         
+- lstm_1 (LSTM),                (None, 4),                 144       
+- dense_1 (Dense),              (None, 1),                 5         
 
-Total params: 149
-Trainable params: 149
-Non-trainable params: 0
-
+Total params: 149, Trainable params: 149, Non-trainable params: 0
 
 ## Model training
 
-Under works
-
-The model training and validation loss graph below indicate no or very small model overfitting. The graph is an example of the 30 second prediction.
+The model training and validation loss graph below indicate no or very small model overfitting. The graph is an example from the history of training the model to predict heart rate in 30 seconds.
 
 ![History](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_his_t30.png)
 
+Early stopping was used to prevent overfitting of the model.
 
 ## Model validation
 
-Under works
-
-An example graph below shows the actual observed heart rate and the predicted heart rate. Prediction here is 30 seconds to future.
+An example graph below shows the actual observed heart rate and the predicted heart rate. Prediction in orange here is one for 30 seconds to future.
 
 ![t10](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_ex_t20.png)
 
@@ -65,19 +64,19 @@ An example graph below shows the actual observed heart rate and the predicted he
  
  The distribution of the residuals over the range of the predicted values and the data collection duration. The residuals seem homogenous across the range of predictions and over the whole data collection period, however the predictions are not as accurate at low heart rate range as over the medium to higher ranges.
 
- #### 10 second prediction
+ **10 second prediction**
  
  ![t10v](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t10.png)
  
  ![t10r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_res_t10.png)
  
- #### 20 second prediction
+ **20 second prediction**
 
  ![t20v](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t20.png)
  
  ![t20r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_res_t20.png)
  
-  #### 40 second prediction
+  **40 second prediction**
  
  ![t40v](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t40.png)
  
