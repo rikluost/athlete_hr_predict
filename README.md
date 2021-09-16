@@ -41,20 +41,20 @@ Non-trainable params: 0
 
 ## Model training
 
-![History](https://github.com/rikluost/athlete_hr_predict/blob/master/HR_his_t40.png)
+![History](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_his_t40.png)
 
 
 ## Evaluation
 
 Under works
 
-![t10](https://github.com/rikluost/athlete_hr_predict/blob/master/HR_t10.png)
+![t10](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t10.png)
 
-![t20](https://github.com/rikluost/athlete_hr_predict/blob/master/HR_t20.png)
+![t20](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t20.png)
 
-![t30](https://github.com/rikluost/athlete_hr_predict/blob/master/HR_t30.png)
+![t30](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t30.png)
 
-![t40](https://github.com/rikluost/athlete_hr_predict/blob/master/HR_t40.png)
+![t40](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t40.png)
 
 
 ## 
