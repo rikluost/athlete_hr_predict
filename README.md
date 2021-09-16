@@ -20,7 +20,7 @@ Parts of the code is based on examples in https://keras.io/examples/timeseries
 
 Under works
 
-![EDA Graph](https://github.com/rikluost/athlete_hr_predict/blob/master/HR_eda_t40.png)
+![EDA Graph](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_eda_t40.png)
 
 ## Training, validation, testing datasets
 
@@ -41,12 +41,14 @@ Non-trainable params: 0
 
 ## Model training
 
-![History](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_his_t40.png)
+![History](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_eda_t5.png)
 
 
 ## Evaluation
 
 Under works
+
+![t5](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t5.png)
 
 ![t10](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t10.png)
 
