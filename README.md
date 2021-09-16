@@ -27,7 +27,9 @@ Under works
 Under works
 
 
+
 ## Model
+
 
 Layer (type)                 Output Shape              Param #   
 input_2 (InputLayer)         [(None, 60, 4)]           0         
@@ -41,24 +43,47 @@ Non-trainable params: 0
 
 ## Model training
 
-![History](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_eda_t5.png)
+Under works
+
+The model training and validation loss graph below indicate no or very small model overfitting. The graph is an example of the 30 second prediction.
+
+![History](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_his_t30.png)
 
 
-## Evaluation
+## Model validation
 
 Under works
 
-![t5](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t5.png)
+An example graph below shows the actual observed heart rate and the predicted heart rate. Prediction here is 30 seconds to future.
 
-![t10](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t10.png)
-
-![t20](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t20.png)
-
-![t30](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t30.png)
-
-![t40](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t40.png)
+![t10](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_ex_t20.png)
 
 
-## 
+### Model validation plots
 
+ The model validation plots are shown for 10sec, 20sec and 40 second predictions below. The distribution of residuals on the left-hand side plot seems to follow near-Gaussian distribution for all prediction times; however the distributions are getting wider the further we are trying to predict. There is very little notable skewness, and the mean is near to the centre. The shape in the QQ plot is similar between the models to all previous models indicating that the distribution of the residuals is tail heavy at different scales between the models. 
+ 
+ The distribution of the residuals over the range of the predicted values and the data collection duration. The residuals seem homogenous across the range of predictions and over the whole data collection period, however the predictions are not as accurate at low heart rate range as over the medium to higher ranges.
+
+ #### 10 second prediction
+ 
+ ![t10v](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t10.png)
+ 
+ ![t10r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_res_t10.png)
+ 
+ #### 20 second prediction
+
+ ![t20v](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t20.png)
+ 
+ ![t20r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_res_t10.png)
+ 
+  #### 40 second prediction
+ 
+ ![t40v](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t40.png)
+ 
+ ![t40r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_res_t10.png)
+
+## Discussion and analysis
+
+Under works
 
