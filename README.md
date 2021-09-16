@@ -75,13 +75,13 @@ An example graph below shows the actual observed heart rate and the predicted he
 
  ![t20v](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t20.png)
  
- ![t20r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_res_t10.png)
+ ![t20r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_res_t20.png)
  
   #### 40 second prediction
  
  ![t40v](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t40.png)
  
- ![t40r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_res_t10.png)
+ ![t40r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_res_t40.png)
 
 ## Discussion and analysis
 
