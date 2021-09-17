@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Human heart rate reflects the physical effort as it needs to pump oxygen to the muscles doing the work. However, there is a delay between the effort and the heart rate. This study researches this delay from machine earning modelling point of view. This study researches the predictability of the heart rate into the future by using machine learning algorithms trained with data collected during tens of variable intensity workouts.
+Human heart rate reflects the physical effort as it needs to pump oxygen to the muscles doing the work; however, there is a delay between the effort and the heart rate (Noakes, T. 2003). This study researches the predictability of the heart rate into the future by using machine learning algorithms trained with data collected during tens of variable intensity workouts.
 
 The approach is dicussed and a working methodology for training an LSTM model (Hochreiter, S. and Schmidhuber J.  1997) for predicting heart rate based on measurements from multiple sensors with a modern a sports is presented. These sport watches are often equipped with a barometer, speed sensor, heart rate monitor, and optionally power, cadence and GPS. 
 
@@ -136,6 +136,8 @@ Hochreiter, S., & Schmidhuber, J. (1997). Long Short-Term Memory. Neural Computa
 Linnainmaa, S. (1970). The representation of the cumulative rounding error of an algorithm as a Taylor expansion of the local rounding errors. University of Helsinki.
 
 McCulloch, W. S., & Pitts, W. (1943). A logical calculus of the ideas immanent in nervous activity. The Bulletin of Mathematical Biophysics, 5(4), 115–133. https://doi.org/10.1007/BF02478259
+
+Noakes, T. (2003). Lore of running (4th ed). Human Kinetics.
 
 Ivakhnenko, A. G., & Lapa, V. G. (1965). Cybernetic Predicting Devices. CCM Information Corporation.
 
