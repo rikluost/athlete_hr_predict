@@ -1,4 +1,4 @@
-# Predicting heart rate in advance during variable intensity exercise with LSTM
+# Predicting heart rate during variable intensity exercise with LSTM
 
 ## Introduction
 
