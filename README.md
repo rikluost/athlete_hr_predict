@@ -18,7 +18,7 @@ Parts of the code is based on Keras tutorials in https://keras.io/examples/times
 
 Below graph shows the features as collected by the Garmin Fenix S6 sports watch during a single run on hills, but with an additional engineered field of the rolling 5 seconds average altitude difference between the 1 second timestamps 'rolling_ave_alt'.
 
-![EDA Graph](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_eda_t40.png)
+![EDA Graph](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_eda.png)
 
 The units in the measurements here are 
 - heart rate, beats per minute
