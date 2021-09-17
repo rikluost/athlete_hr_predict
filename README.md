@@ -2,19 +2,19 @@
 
 ## Introduction
 
-This study explains and discusses a working methodology for training an LSTM model (Hochreiter, S. and Schmidhuber J.  1997) for predicting heart rate from multiple sensors in a modern a sports watch which is equipped with a barometer, speed sensor, heart rate monitor, and optionally power, cadence and GPS. The method allows predicting heart rate, e.g. 30-seconds to the future, based on the past, e.g. 60sec of data from various sensors.
+Human heart rate reflects the physical effort as it needs to pump oxygen to the muscles doing the work. However, there is a delay between the effort and the heart rate. This study researches this delay from machine earning modelling point of view. 
 
-Knowing that a specific heart rate limit will be met, e.g. in 30 seconds, could help athletes reduce the load before the threshold is met and help maintain a wanted heart rate. A pre-trained model could run, e.g. on a watch, treadmill or cycling computer.
+The methodology of the approach is dicussed and a working methodology for training an LSTM model (Hochreiter, S. and Schmidhuber J.  1997) for predicting heart rate in future based on measurements from multiple sensors with a modern a sports is presented. These sport watches are often equipped with a barometer, speed sensor, heart rate monitor, and optionally power, cadence and GPS. The method allows predicting heart rate, e.g. 30-seconds to the future, based on the past, e.g. 60sec of data from various sensors.
+
+Knowing that a specific heart rate limit will be met, e.g. in 20 seconds, could help athletes reduce the load before the threshold is met and help maintain a wanted heart rate. A pre-trained model could run, e.g. on a watch, treadmill or cycling computer.
+
+## Data collection
 
 Modern sports watches contain many sensors, e.g. heart rate, cadence, barometer, GPS, and in the case of cycling, a power sensor. The readings are typically saved every once per second in a file. Here, the input features for training the model consist of a subset of heart rate, cadence, speed, and the hill's grade.
 
-The fit data was collected using Garmin Fenix 6s (https://buy.garmin.com/en-NZ/NZ/p/641501) accompanied by a Polar OH1 sensor (https://www.polar.com/en/products/accessories/polar-verity-sense). The decoding of the example files was done by using the fitdecode (https://github.com/polyvertex/fitdecode) library.
+The data consists of fit files collected on approximately 50 runs during 2021. The runs were made in various environments, i.e. hilly and flat. Also, various efforts, e.g. long and slow runs and interval training, are included. The data collection was made using Garmin Fenix 6s (https://buy.garmin.com/en-NZ/NZ/p/641501) accompanied by a Polar OH1 sensor (https://www.polar.com/en/products/accessories/polar-verity-sense). The decoding of the example files was done by using the fitdecode (https://github.com/polyvertex/fitdecode) library.
 
 Parts of the code is based on Keras tutorials in https://keras.io/examples/timeseries
-
-## EDA
-
-The data consists of fit files collected on approximately 50 runs during 2021. The runs were made in various environments, i.e. hilly and flat. Also, various efforts, e.g. long and slow runs and interval training, are included.
 
 Below graph shows the features as collected by the Garmin Fenix S6 sports watch during a single run on hills, but with an additional engineered field of the rolling 5 seconds average altitude difference between the 1 second timestamps 'rolling_ave_alt'.
 
@@ -48,8 +48,6 @@ The selected features were the model were the heartrate, enhanced_speed, rolling
 - dense_1 (Dense),              (None, 1),                 5         
 
 Total params: 149, Trainable params: 149, Non-trainable params: 0
-
-## Model training
 
 The model training and validation loss graph below indicates little model overfitting. The graph is an example from the history of training the model to predict heart rate in 30 seconds based on the past 60-seconds sensor readings.
 
@@ -90,11 +88,9 @@ An example graph below shows the observed heart rate and the predicted heart rat
 
 ### Results
 
-Under works
+Firstly, the size of the training history was tested with values ranging from 15 seconds to 5 minutes. The MAE with training data reduces up until 120-sec second, but then raises quickly again. 120 seconds is selected for further analysis.
 
-Firstly the size of the training window duration was tested, with values from 15 seconds to 5 minutes. The MAE with training data reduces up until 120-sec second, but then raises quickly again. 120 seconds is selected for further analysis.
-
-MAE for 20-second prediction, with different training window durations with testing dataset:
+MAE for 20-second prediction, with different training history periods with testing dataset:
 - 15-sec training window, trained model 2.45
 - 30-sec training window, trained model 2.44
 - 60-sec training window, trained model 2.37
@@ -105,36 +101,33 @@ MAE for 20-second prediction, with different training window durations with test
 - 240-sec training window, trained model 2.31
 - 300-sec training window, trained model 2.31
 
+Secondly, the prediction with the test dataset was tested to n-seconds in future, both for the naive model and the LSTM model. 
 
 MAE figures for models predicting to future from 5 seconds to one minute. These are all with 120-second training window: 
 - 5-sec naive base line 1.19, trained model 0.89
 - 10-sec naive base line 2.27, trained model 1.38
-- 15-sec naive base line 3.26, trained model 1.83
-- 20-sec naive naive base line 4.16, trained model 2.37
-- 25-sec naive naive base line 5.00, trained model 2.81
-- 30-sec naive base line 5.76, trained model 3.27
-- 35-sec naive base line 6.44, trained model 3.65
-- 40-sec naive base line 7.06, trained model 4.37
+- 15-sec naive base line 3.26, trained model 1.81
+- 20-sec naive naive base line 4.16, trained model 2.23
+- 25-sec naive naive base line 5.00, trained model 2.82
+- 30-sec naive base line 5.76, trained model 3.22
+- 35-sec naive base line 6.44, trained model 3.73
+- 40-sec naive base line 7.06, trained model 4.18
 - 50-sec naive base line 8.24, trained model 5.05
 - 60-sec naive base line 9.39, trained model 6.06
 
+## Analysis and discussion
 
-
-
-
-## Discussion and analysis
-
-Under works
-
-The MAE with the model is clearly better than the naive model. Relatively best performance seems to be between 10 and 35 seconds, where the predicted values provide most meaningful improvement. 
+The MAE reflects to the absolute error of the heart rate prediction. The MAE is clearly better than the naive model, and is nearly half of the error at 15-seconds to 25-seconds future predictions range. Relatively best performance seems to be between 10 and 35 seconds, where the predicted values provide most meaningful improvement when compared to the naive assumption. 
 
 ![t40r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/SUMMARY.png)
 
-The model training was tested with various training window durations. 
+The model training was tested with various training history lengths. The graph here represents prediction to 20-seconds in the future with the moving history window ranging from 15 seconds to 5 minutes. The best performance was found with 120-second history. 
 
 ![t40r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/SUMMARY_t.png)
 
+## Conclusion
 
+The method works and can improve the mean absolute error of the naive assumption that heart rate is the same as it is now 20 seconds from now by 50% with training history of 120-seconds. Further study on different deep learning architectures could further improve the simple model udes in this study.
 
 ## References
 
