@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This study explains and discusses a working methodology for training an LSTM model (Hochreiter, S. and Schmidhuber J.  1997) for predicting heart rate from multiple sensors data of a sports watch equipped with a barometer, speed information, heart rate monitor, optionally power, cadence and GPS. The method allows predicting heart rate, e.g. 30-seconds to the future, based on the past, e.g. 60sec of data from various sensors.
+This study explains and discusses a working methodology for training an LSTM model (Hochreiter, S. and Schmidhuber J.  1997) for predicting heart rate from multiple sensors in a modern a sports watch which is equipped with a barometer, speed sensor, heart rate monitor, and optionally power, cadence and GPS. The method allows predicting heart rate, e.g. 30-seconds to the future, based on the past, e.g. 60sec of data from various sensors.
 
 Knowing that a specific heart rate limit will be met, e.g. in 30 seconds, could help athletes reduce the load before the threshold is met and help maintain a wanted heart rate. A pre-trained model could run, e.g. on a watch, treadmill or cycling computer.
 
@@ -28,7 +28,11 @@ The units in the measurements here are
 - distance, metres
 - enhanced_altitude, metres above the sea level
 
+No data cleaning transactions took place, and no data was not missing.
+
 ## Training, validation, testing datasets
+
+Prior to training any machine learning algorithms, a naive model was created where it is assumed that in 20 seconds time the heart rate is the same as it is currently. The machine learning results will validated against this baseline performance.
 
 The fit files were split into 10 validation files, approximately 40 model training files, and 5 for testing purposes.
 
@@ -45,11 +49,9 @@ The selected features were the model were the heartrate, enhanced_speed, rolling
 
 Total params: 149, Trainable params: 149, Non-trainable params: 0
 
-
-
 ## Model training
 
-The model training and validation loss graph below indicates no or very small model overfitting. The graph is an example from the history of training the model to predict heart rate in 30 seconds.
+The model training and validation loss graph below indicates little model overfitting. The graph is an example from the history of training the model to predict heart rate in 30 seconds based on the past 60-seconds sensor readings.
 
 ![History](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_his_t30.png)
 
@@ -68,27 +70,71 @@ An example graph below shows the observed heart rate and the predicted heart rat
  
  The residuals' distribution over the range of the predicted values and the data collection duration are shown below. The residuals seem homogenous across the range of predictions and over the whole data collection period.
 
- **10-second prediction**
+ **10-second prediction from 60-second history**
  
- ![t10v](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t10.png)
+ ![t10v](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t10-120.png)
  
  ![t10r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_res_t10.png)
  
- **20-second prediction**
+ **20-second prediction from 60-second history**
 
- ![t20v](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t20.png)
+ ![t20v](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t20-120.png)
  
  ![t20r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_res_t20.png)
  
-  **40-second prediction**
+  **40-second prediction from 60-second history**
  
- ![t40v](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t40.png)
+ ![t40v](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t40-120.png)
  
  ![t40r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_res_t40.png)
+
+### Results
+
+Under works
+
+Firstly the size of the training window duration was tested, with values from 15 seconds to 5 minutes. The MAE with training data reduces up until 120-sec second, but then raises quickly again. 120 seconds is selected for further analysis.
+
+MAE for 20-second prediction, with different training window durations with testing dataset:
+- 15-sec training window, trained model 2.45
+- 30-sec training window, trained model 2.44
+- 60-sec training window, trained model 2.37
+- 90-sec training window, trained model 2.27
+- 120-sec training window, trained model 2.21
+- 150-sec training window, trained model 2.27
+- 180-sec training window, trained model 2.28
+- 240-sec training window, trained model 2.31
+- 300-sec training window, trained model 2.31
+
+
+MAE figures for models predicting to future from 5 seconds to one minute. These are all with 120-second training window: 
+- 5-sec naive base line 1.19, trained model 0.89
+- 10-sec naive base line 2.27, trained model 1.38
+- 15-sec naive base line 3.26, trained model 1.83
+- 20-sec naive naive base line 4.16, trained model 2.37
+- 25-sec naive naive base line 5.00, trained model 2.81
+- 30-sec naive base line 5.76, trained model 3.27
+- 35-sec naive base line 6.44, trained model 3.65
+- 40-sec naive base line 7.06, trained model 4.37
+- 50-sec naive base line 8.24, trained model 5.05
+- 60-sec naive base line 9.39, trained model 6.06
+
+
+
+
 
 ## Discussion and analysis
 
 Under works
+
+The MAE with the model is clearly better than the naive model. Relatively best performance seems to be between 10 and 35 seconds, where the predicted values provide most meaningful improvement. 
+
+![t40r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/SUMMARY.png)
+
+The model training was tested with various training window durations. 
+
+![t40r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/SUMMARY_t.png)
+
+
 
 ## References
 
