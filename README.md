@@ -2,9 +2,9 @@
 
 ## Introduction
 
-Human heart rate reflects the physical effort as it needs to pump oxygen to the muscles doing the work. However, there is a delay between the effort and the heart rate. This study researches this delay from machine earning modelling point of view. 
+Human heart rate reflects the physical effort as it needs to pump oxygen to the muscles doing the work. However, there is a delay between the effort and the heart rate. This study researches this delay from machine earning modelling point of view. This study researches the predictability of the heart rate into the future by using machine learning algorithms trained with data collected during tens of variable intensity workouts.
 
-The methodology of the approach is dicussed and a working methodology for training an LSTM model (Hochreiter, S. and Schmidhuber J.  1997) for predicting heart rate in future based on measurements from multiple sensors with a modern a sports is presented. These sport watches are often equipped with a barometer, speed sensor, heart rate monitor, and optionally power, cadence and GPS. The method allows predicting heart rate, e.g. 30-seconds to the future, based on the past, e.g. 60sec of data from various sensors.
+The approach is dicussed and a working methodology for training an LSTM model (Hochreiter, S. and Schmidhuber J.  1997) for predicting heart rate based on measurements from multiple sensors with a modern a sports is presented. These sport watches are often equipped with a barometer, speed sensor, heart rate monitor, and optionally power, cadence and GPS. 
 
 Knowing that a specific heart rate limit will be met, e.g. in 20 seconds, could help athletes reduce the load before the threshold is met and help maintain a wanted heart rate. A pre-trained model could run, e.g. on a watch, treadmill or cycling computer.
 
@@ -68,19 +68,19 @@ An example graph below shows the observed heart rate and the predicted heart rat
  
  The residuals' distribution over the range of the predicted values and the data collection duration are shown below. The residuals seem homogenous across the range of predictions and over the whole data collection period.
 
- **10-second prediction from 60-second history**
+ **10-second prediction from 120-second history**
  
  ![t10v](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t10-120.png)
  
  ![t10r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_res_t10.png)
  
- **20-second prediction from 60-second history**
+ **20-second prediction from 120-second history**
 
  ![t20v](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t20-120.png)
  
  ![t20r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_res_t20.png)
  
-  **40-second prediction from 60-second history**
+  **40-second prediction from 120-second history**
  
  ![t40v](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/HR_t40-120.png)
  
