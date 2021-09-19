@@ -40,7 +40,7 @@ The fit files were split into 10 validation files, approximately 40 model traini
 
 Neural networks (NN) are the current state of the art family of trainable machine learning algorithms, even though they were proposed as early as the 1940s (McCulloch & Pitts, 1943). First neural networks were proposed in 1965 by Ivakhnenko & Lapa (1965). Following Seppo Linnainmaas thesis (1970), Stuart Dreyfus (1973) used backpropagation to adapt parameters to error gradients. A specific approach is to use Long Short Term Memory (LSTM) (Hochreiter, S. and Schmidhuber J. 1997) for predicting the future from time series of data.
 
-The selected features were the model were the heartrate, enhanced_speed, rolling_ave_alt and cadence. Simple LSTM model with one hidden 4 neuron LSTM layer was selected with a drop-out layer for model regularisation. The model architecture is shown below:
+The selected features were the model were the heartrate, enhanced_speed, rolling_ave_alt and cadence. Simple LSTM model with one hidden 4 neuron LSTM layer was selected. The model architecture is shown below:
 
 - Layer (type),                 Output Shape,              Param #   
 - input_2 (InputLayer),         [(None, 60, 4)],           0         
@@ -48,6 +48,8 @@ The selected features were the model were the heartrate, enhanced_speed, rolling
 - dense_1 (Dense),              (None, 1),                 5         
 
 Total params: 149, Trainable params: 149, Non-trainable params: 0
+
+Additionally, exponential learning rate scheduling was used.
 
 The model training and validation loss graph below indicates little model overfitting. The graph is an example from the history of training the model to predict heart rate in 30 seconds based on the past 60-seconds sensor readings.
 
