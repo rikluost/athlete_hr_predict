@@ -2,9 +2,9 @@
 
 ## Introduction
 
-Human heart rate reflects the physical effort as it needs to pump oxygen to the muscles doing the work; however, there is a delay between the effort and the heart rate (Noakes, T. 2003). This study researches the predictability of the heart rate into the future by using machine learning algorithms trained with data collected during tens of variable intensity workouts.
+Human heart rate reflects directly the physical effort as it needs to pump oxygen to the muscles doing the work; however, there is a delay between the effort and the heart rate (Noakes, T. 2003). This study aims to research the connection between effort and heartrate response delay with an objective to create a machine learning algorithm for predicting the heart rate in $y$ seconds future the future based on the past $X$ seconds activity. 
 
-The approach is dicussed and a working methodology for training an LSTM model (Hochreiter, S. and Schmidhuber J.  1997) for predicting heart rate based on measurements from multiple sensors with a modern a sports is presented. These sport watches are often equipped with a barometer, speed sensor, heart rate monitor, and optionally power, cadence and GPS. 
+The approach is to train machine learning model with data collected during tens of variable intensity workouts. An LSTM algortihm  (Hochreiter, S. and Schmidhuber J.  1997) is used for predicting heart rate. The training data is collected from multiple sensors built in a modern a sports watch. These sensors include a barometer for altitude, speed sensor, heart rate monitor, cadence and GPS. 
 
 Knowing that a specific heart rate limit will be met, e.g. in 20 seconds, could help athletes reduce the load before the threshold is met and help maintain a wanted heart rate. A pre-trained model could run, e.g. on a watch, treadmill or cycling computer.
 
@@ -119,17 +119,17 @@ MAE figures for models predicting to future from 5 seconds to one minute. These 
 
 ## Analysis and discussion
 
-The MAE reflects to the absolute error of the heart rate prediction. The MAE is clearly better than the naive model, and is nearly half of the error at 15-seconds to 25-seconds future predictions range. Relatively best performance seems to be between 10 and 35 seconds, where the predicted values provide most meaningful improvement when compared to the naive assumption. 
+The MAE reflects to the absolute error of the heart rate prediction, when comparing the predicted and actual heartrate in n seconds time. The MAE is with predictive model is clearly better than the naive model, and is approximately half of the error at 15-seconds to 25-seconds range. Relatively best performance seems to be between 10 and 35 seconds, where the predicted values provide most meaningful improvement when compared to the naive assumption. 
 
 ![t40r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/SUMMARY.png)
 
-The model training was tested with various training history lengths. The graph here represents prediction to 20-seconds in the future with the moving history window ranging from 15 seconds to 5 minutes. The best performance was found with 120-second history. 
+The model training was tested with various training history lengths to have undesrtanding on how far the past activity influences future heartrate. The graph below represents prediction to 20-seconds in the future with the moving history window ranging from 15 seconds to 5 minutes. The best performance was found with 120-second history. 
 
 ![t40r](https://github.com/rikluost/athlete_hr_predict/blob/master/graphs/SUMMARY_t.png)
 
 ## Conclusion
 
-The method works and can improve the mean absolute error of the naive assumption that heart rate is the same as it is now 20 seconds from now by 50% with training history of 120-seconds. Further study on different deep learning architectures could further improve the simple model udes in this study.
+The method seems to work and improves the mean absolute error of the naive assumption that heart rate is the same as it is now 20 seconds from now by 50% with training history of 120-seconds. Further study on different deep learning architectures could further improve the simple model used in this study.
 
 ## References
 
